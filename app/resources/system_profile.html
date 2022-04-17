@@ -1,0 +1,36 @@
+<!--[main]-->
+<div class="panel panel-default" style="width: 100%">
+    <div class="panel-heading" style="width: 100%;height:43px;padding:5px;">
+        <div class="panel-title" style="padding:5px;float:left"> _t{Profile} </div>
+    </div>
+    <form class="form-horizontal" enctype="multipart/form-data" name="form_search_SystemProgram" id="form_search_SystemProgram" method="post" type="bootstrap">
+        <div class="panel-body" style="width: 100%">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" style="padding:10px; margin-top: -1px;" id="tab_0">
+                    <div class="form-group tformrow row">
+                        <div class="col-sm-3 fb-field-container control-label" style="min-height:26px"><label><b>_t{Name}</b></label></div>
+                        <div class="col-sm-9 fb-field-container " style="min-height:26px; margin-top:7px"> {$name} </div>
+                    </div>
+                    <div class="form-group tformrow row">
+                        <div class="col-sm-3 fb-field-container control-label" style="min-height:26px"><label><b>_t{Email}</b></label></div>
+                        <div class="col-sm-9 fb-field-container " style="min-height:26px; margin-top:7px"> {$email} </div>
+                    </div>
+                    <div class="form-group tformrow row">
+                        <div class="col-sm-3 fb-field-container control-label" style="min-height:26px"><label><b>_t{Groups}</b></label></div>
+                        <div class="col-sm-9 fb-field-container " style="min-height:26px; margin-top:7px"> {$groupnames} </div>
+                    </div>
+                    <div class="form-group tformrow row">
+                        <div class="col-sm-3 fb-field-container control-label" style="min-height:26px"><label><b>_t{Front page}</b></label></div>
+                        <div class="col-sm-9 fb-field-container " style="min-height:26px; margin-top:7px"> {$frontpage} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer" style="width: 100%">
+            <a href="index.php?class=SystemProfileForm&method=onEdit" class="btn btn-sm btn-primary">
+            <span><i class="fa fa-edit" style="padding-right:4px"></i>Edit</span>
+            </a>
+        </div>
+    </form>
+</div>
+<!--[/main]-->

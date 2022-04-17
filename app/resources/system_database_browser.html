@@ -1,0 +1,40 @@
+<!--[main]-->
+<style>
+    .database-containter {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        height: calc( 100vh - 175px);
+    }
+    .database-containter > div:nth-child(1) {
+        width: 300px;
+    }
+    .database-containter > div:nth-child(2) {
+        flex: 1;
+    }
+
+    @media screen and (max-width: 550px){
+        .database-containter {
+            flex-direction: column;
+            height: calc( 100vh - 150px);
+        }
+        .database-containter > div:nth-child(1) {
+            width: 100%;
+            flex: 3;
+        }
+        .database-containter > div:nth-child(2) {
+            flex: 1;
+            display: contents;
+        }
+    }
+</style>
+<div class="database-containter">
+    <div id="database_browser_container">
+        {$database_browser}
+    </div>
+    <div id="table_list_container">
+    </div>
+</div>
+<div id="data_browser_container" style="width:calc(100% - 300px)">
+</div>
+<!--[/main]-->
