@@ -41,6 +41,10 @@
         <action>SystemUserList</action>
         <icon>fas:user fa-fw</icon>
       </menuitem>
+	  <menuitem label='_t{Menu editor}'>
+                  <icon>far:edit fa-fw</icon>
+                  <action>SystemMenuEditor</action>
+              </menuitem>
       <menuitem label="_t{Database explorer}">
         <action>SystemDatabaseExplorer</action>
         <icon>fas:database fa-fw</icon>
