@@ -54,8 +54,22 @@ $ yarn dev
 ```bash
 # Clone este repositório
 $ composer install
-$ composer update
 ```
+
+Importe o banco de dados no MySQL;
+Va para config/app_local.php
+
+Procure por "'Datasources' => ["
+
+altere o host para o Endereço do MySQL
+username, password, database
+Salve o arquivo!
+
+o acesso padrão é login: superadmin
+senha: admin
+
+pode ser alterada indo em meu perfil e alterar a senha!
+
 Para mais informações do wppconnect visite este <a href="https://github.com/wppconnect-team/wppconnect-server" title="Repositório">🚀</a>
 # Pronto, só correr para o abraço
 
