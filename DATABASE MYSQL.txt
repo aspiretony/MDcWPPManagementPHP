@@ -1,0 +1,187 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 02-Out-2022 às 19:03
+-- Versão do servidor: 8.0.27
+-- versão do PHP: 8.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `mdcweb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cake_d_c_users_phinxlog`
+--
+
+DROP TABLE IF EXISTS `cake_d_c_users_phinxlog`;
+CREATE TABLE IF NOT EXISTS `cake_d_c_users_phinxlog` (
+  `version` bigint NOT NULL,
+  `migration_name` varchar(100) DEFAULT NULL,
+  `start_time` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL,
+  `breakpoint` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `cake_d_c_users_phinxlog`
+--
+
+INSERT INTO `cake_d_c_users_phinxlog` (`version`, `migration_name`, `start_time`, `end_time`, `breakpoint`) VALUES
+(20150513201111, 'Initial', '2022-09-29 22:38:29', '2022-09-29 22:38:31', 0),
+(20161031101316, 'AddSecretToUsers', '2022-09-29 22:38:31', '2022-09-29 22:38:32', 0),
+(20190208174112, 'AddAdditionalDataToUsers', '2022-09-29 22:38:32', '2022-09-29 22:38:32', 0),
+(20210929202041, 'AddLastLoginToUsers', '2022-09-29 22:38:33', '2022-09-29 22:38:33', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `dispositivos`
+--
+
+DROP TABLE IF EXISTS `dispositivos`;
+CREATE TABLE IF NOT EXISTS `dispositivos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(20) NOT NULL,
+  `sessao` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `numero` varchar(20) NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `disp_users`
+--
+
+DROP TABLE IF EXISTS `disp_users`;
+CREATE TABLE IF NOT EXISTS `disp_users` (
+  `user_id` char(36) NOT NULL,
+  `dispositivo_id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_dispositivo` (`dispositivo_id`),
+  KEY `fk_user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `empresas`
+--
+
+DROP TABLE IF EXISTS `empresas`;
+CREATE TABLE IF NOT EXISTS `empresas` (
+  `empresa` varchar(255) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `social_accounts`
+--
+
+DROP TABLE IF EXISTS `social_accounts`;
+CREATE TABLE IF NOT EXISTS `social_accounts` (
+  `id` char(36) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `provider` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `reference` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `description` text,
+  `link` varchar(255) NOT NULL,
+  `token` varchar(500) NOT NULL,
+  `token_secret` varchar(500) DEFAULT NULL,
+  `token_expires` datetime DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `data` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` char(36) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `token_expires` datetime DEFAULT NULL,
+  `api_token` varchar(255) DEFAULT NULL,
+  `activation_date` datetime DEFAULT NULL,
+  `secret` varchar(32) DEFAULT NULL,
+  `secret_verified` tinyint(1) DEFAULT NULL,
+  `tos_date` datetime DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `is_superuser` tinyint(1) NOT NULL DEFAULT '0',
+  `role` varchar(255) DEFAULT 'user',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `additional_data` text,
+  `last_login` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `token`, `token_expires`, `api_token`, `activation_date`, `secret`, `secret_verified`, `tos_date`, `active`, `is_superuser`, `role`, `created`, `modified`, `additional_data`, `last_login`) VALUES
+('548f3e2a-e9ff-41c7-bbff-25ded8982da3', 'superadmin', 'superadmin@example.com', '$2y$10$ncbMWY1VW5MGRFPtrfTeFeHKUjM/6EsHq5D10ndAzkfoU30LS5oF.', 'Super Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 'superuser', '2022-09-29 19:42:37', '2022-09-29 19:49:53', NULL, '2022-10-02 18:28:50');
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `disp_users`
+--
+ALTER TABLE `disp_users`
+  ADD CONSTRAINT `fk_dispositivo` FOREIGN KEY (`dispositivo_id`) REFERENCES `dispositivos` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Limitadores para a tabela `social_accounts`
+--
+ALTER TABLE `social_accounts`
+  ADD CONSTRAINT `social_accounts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
