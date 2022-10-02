@@ -1,0 +1,12 @@
+parameters:
+	level: 7
+	checkMissingIterableValueType: false
+	bootstrapFiles:
+		- tests/bootstrap.php
+	paths:
+		- src
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$options of method Cake\\\\View\\\\StringTemplate\\:\\:formatAttributes\\(\\) expects array\\<string, mixed\\>\\|null, array given\\.$#"
+			count: 1
+			path: src/View/Helper/FormHelper.php
