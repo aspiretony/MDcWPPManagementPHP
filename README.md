@@ -10,32 +10,51 @@
 
 ### CRÉDITOS/AGRADECIMENTOS
 
-- FrameWork Utilizado: ADIANTI do Pablo https://www.adianti.com.br/
-- BackEndServer do WhatsApp: WPPConnect-server https://wppconnect-team.github.io/
+- Pessoal do WPPConnect sempre respondendo e a comunidade toda se ajudando :) https://wppconnect-team.github.io/
 - ....
 
-### Já feito
+### Em Construção
 
 - [x] Configurações Iniciais [27/02/2022];
 - [x] Adição de Sessões e Pareamento;
-- [x] Modificação do arquivo configs.json DO SERVIDOR PRIMÁRIO APENAS diretamente do sistema;
-- [x] Adições de novos servidores
-- [ ] Bugs e refinamentos 
+- [x] Modificação do arquivo configs.json DO SERVIDOR;
+- [x] Criação de usuários
+- [x] Permissão de usuários e API para uso externo via método GET ou direto do navegador
+- [x] Envio de Mensagens (API EXTERNA)
+- [x] Envio de áudio, arquivo, imagem (API EXTERNA)
+- [x] Envio de link (API EXTERNA)
+- [ ] Envio de localização GPS (API EXTERNA)
+- [ ] Envio de sticks (API EXTERNA)
+- [ ] Envio de Botões (API EXTERNA)
+- [x] Adição de usuários e APIs para acesso externo
+- [x] Acesso a API externo
+- [x] Token e Sessão salva para acesso via POST
+- [x] Chamadas Restfull
+- [ ] Gerenciar o servidor NODE WppConnect (start, stop, restart)
+- [x] Servidor modo YARN DEV
+- [ ] Servidor modo YARN DIST
+- [ ] Escolher modo de servidor (DEV ou DIST)
+
 
 ### Pré-requisitos
 
-O Sistema foi testado tanto em Linux como Windows, Caso utilize processador ARM, só precisa baixar a versão do crhomiun para o mesmo caso ele não funcione de primeira <br>
-Vai ser necessário que o PHP Tenha o Suporte do SQLITE, ainda não vou por MySQL já que o SQLITE além de deixar mais simples está funcional, porem caso queira a DB está dentro de app/database/wppmanagement.sql <br>
-Enquanto não faço um script automático vai na mão mesmo rsrs caso seja Windows, instale o xampp e seja feliz, caso seja linux existe vários tutoriais de como instalar o LAMPP <br>
-Também é necessário o NODE 14 Rodando na maquina.
-
-### 🎲 Rodando o Back End (servidor)
-
+O Sistema foi testado tanto em Linux como Windows, Caso utilize processador ARM, só precisa baixar a versão do chromium para o mesmo caso ele não funcione de primeira <br>
+Pode-se utilizar qualquer banco de dados que queira, seja noSQL como o mongoDB, como pode-se utilizar o MySQL, Postgree pois o sistema é baseado em ORM mas no geral o MySQL Responde muito bem :)<br>
+é necessário o PHP ter as extensões mbstring, openssl ou mcrypt, intl. <br>
+Diretórios TMP, Logs e Nodeserver devem ter permissão 777 caso seja linux
+<br>
+### 🎲 Rodando o WPPConnect (servidor)
 ```bash
 # Clone este repositório
 $ cd nodeserver/
 $ yarn install # ou npm install
 $ yarn dev
+```
+### 🎲 Instalando o MDcManagementWPPConnect (servidor)
+```bash
+# Clone este repositório
+$ composer install
+$ composer update
 ```
 Para mais informações do wppconnect visite este <a href="https://github.com/wppconnect-team/wppconnect-server" title="Repositório">🚀</a>
 # Pronto, só correr para o abraço
